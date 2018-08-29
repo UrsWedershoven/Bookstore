@@ -32,6 +32,10 @@ page 50100 "BookCard"
                 {
                     ApplicationArea = All;
                 }
+                field(NoOfCustomers;NoOfCustomers)
+                {
+                    ApplicationArea = All;
+                }
                 
             }
         }

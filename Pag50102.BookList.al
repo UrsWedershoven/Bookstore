@@ -35,6 +35,10 @@ page 50102 "BookList"
                 {
                     ApplicationArea = All;
                 }
+                field(NoOfCustomers;NoOfCustomers)
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

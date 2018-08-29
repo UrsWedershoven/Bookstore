@@ -27,6 +27,13 @@ table 50100 "Book"
         {
             Caption = 'Page Count';
         }
+        field(10;"NoOfCustomers";Integer)
+        {
+            Caption = 'No. of Customers';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = count(Customer where(FavouriteBookNo = field("No.")));
+        }
     }
 
     keys
