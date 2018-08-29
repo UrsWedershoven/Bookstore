@@ -59,7 +59,6 @@ page 50102 "BookList"
                 trigger OnAction()
                 var 
                     Book : Record Book;
-                    ExpBooks : XmlPort ExportBooks;
                 begin
                     CurrPage.SetSelectionFilter(Book);
                     Xmlport.Run(Xmlport::ExportBooks,false,false,Book);
