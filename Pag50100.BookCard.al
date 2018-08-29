@@ -3,7 +3,6 @@ page 50100 "BookCard"
     PageType = Card;
     SourceTable = Book;
     
-    
     layout
     {
         area(Content)
