@@ -1,0 +1,26 @@
+{
+  "id": "5481d297-2070-488f-bc5d-8365ea81c837",
+  "name": "Bookstore",
+  "publisher": "GOB Software & Systeme",
+  "brief": "",
+  "description": "",
+  "version": "1.0.0.0",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "12.0.0.0",
+  "application": "12.0.0.0",
+  "idRange": {
+    "from": 50100,
+    "to": 50149
+  },
+  "features": [
+    "TranslationFile"
+  ],
+  "showMyCode": true
+}
