@@ -3,7 +3,7 @@ page 50103 BookDetailsFactBox
     PageType = CardPart;
     SourceTable = Book;
     Caption = 'Book Details';
-    
+    Editable = false; //muss nicht, FactBox ist automsatisch schreibgeschützt
 
     layout
     {
@@ -14,7 +14,10 @@ page 50103 BookDetailsFactBox
                 field("No."; "No.")
                 {
                     ApplicationArea = All;
-                    LookupPageId = BookCard;
+                    trigger OnDrillDown()
+                    begin
+                        ShowDetails();
+                    end;
                     
                 }
                 field(Title; Title)
@@ -33,4 +36,9 @@ page 50103 BookDetailsFactBox
             }
         }
     }
+
+    local procedure ShowDetails()
+    begin
+        Page.Run(Page::BookCard,Rec);
+    end;
 }

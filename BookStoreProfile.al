@@ -22,6 +22,13 @@ pagecustomization CustomerCardCustomization customizes "Customer Card"
 
 pagecustomization CustomerListCustomization customizes "Customer List"
 {
+    layout
+    {
+        modify("Location Code")
+        {
+            Visible = false;
+        }
+    }
     actions
     {
         movebefore(NewSalesInvoice; NewSalesOrder)
