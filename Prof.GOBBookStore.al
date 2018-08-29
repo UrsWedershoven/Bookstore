@@ -1,4 +1,4 @@
-profile GOBBookStore 
+profile "GOBBookStore" 
 {
     Description = 'Book Store';
     RoleCenter = "Order Processor Role Center";

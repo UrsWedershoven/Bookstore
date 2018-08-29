@@ -1,4 +1,4 @@
-page 50103 BookDetailsFactBox
+page 50103 "BookDetailsFactBox"
 {
     PageType = CardPart;
     SourceTable = Book;
