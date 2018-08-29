@@ -11,5 +11,14 @@ pageextension 50100 "CustomerCardBookExtension" extends "Customer Card"
             }
             
         }
+        addfirst(FactBoxes)
+        {
+            part(BookDetails;BookDetailsFactBox)
+            {
+                ApplicationArea = All;
+                SubPageLink = "No." = field(FavouriteBookNo);
+            }
+        }
     }
+
 }
