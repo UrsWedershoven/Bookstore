@@ -10,7 +10,7 @@ codeunit 50102 "Notification"
     var
         customer: Record Customer;
         TheNotification: Notification;
-        MyNotif : Record "My Notifications";
+        MyNotif: Record "My Notifications";
     begin
         if (Rec."No.") = '' then begin
             TheNotification.Id := GetCustCreditLimitNotificationID();
@@ -19,24 +19,25 @@ codeunit 50102 "Notification"
         end;
         if customer.get(Rec."Sell-to Customer No.") then begin
             customer.CalcFields("Balance (LCY)");
-            if (customer."Balance (LCY)" > customer."Credit Limit (LCY)") and (MyNotif.IsEnabledForRecord(GetCustCreditLimitNotificationID(),Rec)) then begin
+            if (customer."Balance (LCY)" > customer."Credit Limit (LCY)") and (MyNotif.IsEnabledForRecord(GetCustCreditLimitNotificationID(), Rec)) then begin
                 TheNotification.Id := GetCustCreditLimitNotificationID();
                 TheNotification.Scope(NotificationScope::LocalScope);
                 TheNotification.Message('Achtung: Das Kreditlimit ist überschritten!');
                 TheNotification.AddAction('Debitor öffnen', Codeunit::Notification, 'OpenNotificationAction');
                 TheNotification.SetData('CustomerNo', customer."No.");
                 TheNotification.Send();
-            end else 
+            end else begin
                 TheNotification.Recall();
+            end;
         end;
     end;
 
-    [EventSubscriber(ObjectType::Page,Page::"My Notifications",'OnInitializingNotificationWithDefaultState','',true, true)]
+    [EventSubscriber(ObjectType::Page, Page::"My Notifications", 'OnInitializingNotificationWithDefaultState', '', true, true)]
     procedure AddSmartNotif()
     var
-        Notif : Record "My Notifications";
+        Notif: Record "My Notifications";
     begin
-        Notif.InsertDefaultWithTableNum(GetCustCreditLimitNotificationID(), 'Kreditlimitprüfung', '',Database::"Sales Header");
+        Notif.InsertDefaultWithTableNum(GetCustCreditLimitNotificationID(), 'Kreditlimitprüfung', '', Database::"Sales Header");
     end;
 
     procedure OpenNotificationAction(TheNotification: Notification)
@@ -44,8 +45,7 @@ codeunit 50102 "Notification"
         customer: Record Customer;
         customerNo: code[20];
     begin
-        if TheNotification.HasData('CustomerNo') then
-        begin
+        if TheNotification.HasData('CustomerNo') then begin
             customerNo := TheNotification.GetData('CustomerNo');
             if customer.get(customerNo) then
                 Page.run(Page::"Customer Card", customer);
